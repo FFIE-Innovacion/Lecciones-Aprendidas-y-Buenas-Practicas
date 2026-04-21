@@ -1091,8 +1091,13 @@ function updateBadges() {
    GOOGLE SHEETS INTEGRATION
 ═══════════════════════════════════════════ */
 function loadGSConfig() {
+  const SHEET_ID = '1cPYpeTgwwC0fQnvPeR_3tmXnp3MmY650ghL-cUkdd8U';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTXUWZmGtOotBErXoQCQfRMkuArtzejRELO4fpo1n6fUYxlCDQpBaib-zEewZZAqHg/exec';
+  const DEFAULT_U01 = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=I_CO_01`;
+  const DEFAULT_U02 = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=I_CO_02`;
+  const DEFAULT_U03 = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=I_CO_03`;
   const c = JSON.parse(localStorage.getItem('ico_gs_cfg') || '{}');
-  APP.gs = { u01:c.u01||'', u02:c.u02||'', u03:c.u03||'', script:c.script||'', auto:c.auto||0 };
+  APP.gs = { u01:c.u01||DEFAULT_U01, u02:c.u02||DEFAULT_U02, u03:c.u03||DEFAULT_U03, script:c.script||SCRIPT_URL, auto:c.auto||0 };
   if(c.u01) document.getElementById('cfg-u01').value = c.u01;
   if(c.u02) document.getElementById('cfg-u02').value = c.u02;
   if(c.u03) document.getElementById('cfg-u03').value = c.u03;
@@ -2243,3 +2248,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
